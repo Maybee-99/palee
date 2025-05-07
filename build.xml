@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- You may freely edit this file. See commented blocks below for -->
+<!-- some examples of how to customize the build. -->
+<project name="Palee_Center" default="default" basedir=".">
+    <description>Builds, tests, and runs the project Palee Center.</description>
+    <import file="nbproject/build-impl.xml"/>
+    
+    <!-- Copy JasperReports files after compilation -->
+    <target name="-post-compile">
+        <!-- Copy .jrxml and .jasper files to build/classes/Report -->
+        <copy todir="${build.classes.dir}/Report">
+            <fileset dir="src/Report" includes="**/*.jrxml,**/*.jasper"/>
+        </copy>
+    </target>
+</project>

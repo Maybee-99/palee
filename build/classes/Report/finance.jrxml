@@ -1,0 +1,197 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="finance" pageWidth="595" pageHeight="842" columnWidth="523" leftMargin="36" rightMargin="36" topMargin="36" bottomMargin="36" uuid="de687f09-9a48-414f-8fca-61f7f2c24469">
+	<property name="com.jaspersoft.studio.data.sql.tables" value=""/>
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="Palee"/>
+	<property name="com.jaspersoft.studio.unit." value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.pageHeight" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.pageWidth" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.topMargin" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.bottomMargin" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.leftMargin" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.rightMargin" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.columnWidth" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.columnSpacing" value="pixel"/>
+	<property name="ireport.zoom" value="1.331000000000002"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="profit" class="java.lang.String"/>
+	<parameter name="income" class="java.lang.String"/>
+	<parameter name="expense" class="java.lang.String"/>
+	<queryString language="SQL">
+		<![CDATA[]]>
+	</queryString>
+	<field name="ID" class="java.lang.Integer">
+		<property name="com.jaspersoft.studio.field.name" value="incomeID"/>
+		<property name="com.jaspersoft.studio.field.label" value="ID"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="income"/>
+	</field>
+	<field name="IncomeAmount" class="java.lang.Integer">
+		<property name="com.jaspersoft.studio.field.name" value="Amount"/>
+		<property name="com.jaspersoft.studio.field.label" value="IncomeAmount"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="income"/>
+	</field>
+	<field name="IncomeDescription" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="description"/>
+		<property name="com.jaspersoft.studio.field.label" value="IncomeDescription"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="income"/>
+	</field>
+	<field name="IncomeDate" class="java.sql.Date">
+		<property name="com.jaspersoft.studio.field.name" value="IncomeDate"/>
+		<property name="com.jaspersoft.studio.field.label" value="IncomeDate"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="income"/>
+	</field>
+	<field name="ExpenseID" class="java.lang.Integer">
+		<property name="com.jaspersoft.studio.field.name" value="expenseID"/>
+		<property name="com.jaspersoft.studio.field.label" value="ExpenseID"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="expense"/>
+	</field>
+	<field name="ExpenseAmount" class="java.lang.Integer">
+		<property name="com.jaspersoft.studio.field.name" value="Amount"/>
+		<property name="com.jaspersoft.studio.field.label" value="ExpenseAmount"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="expense"/>
+	</field>
+	<field name="ExpenseDescription" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="description"/>
+		<property name="com.jaspersoft.studio.field.label" value="ExpenseDescription"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="expense"/>
+	</field>
+	<field name="ExpenseDate" class="java.sql.Date">
+		<property name="com.jaspersoft.studio.field.name" value="expenseDate"/>
+		<property name="com.jaspersoft.studio.field.label" value="ExpenseDate"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="expense"/>
+	</field>
+	<field name="Difference" class="java.lang.Long">
+		<property name="com.jaspersoft.studio.field.name" value="Difference"/>
+		<property name="com.jaspersoft.studio.field.label" value="Difference"/>
+	</field>
+	<group name="ID">
+		<groupExpression><![CDATA[$F{ID}]]></groupExpression>
+	</group>
+	<group name="IncomeAmount">
+		<groupExpression><![CDATA[$F{IncomeAmount}]]></groupExpression>
+	</group>
+	<group name="IncomeDescription">
+		<groupExpression><![CDATA[$F{IncomeDescription}]]></groupExpression>
+	</group>
+	<group name="IncomeDate">
+		<groupExpression><![CDATA[$F{IncomeDate}]]></groupExpression>
+	</group>
+	<group name="ExpenseID">
+		<groupExpression><![CDATA[$F{ExpenseID}]]></groupExpression>
+	</group>
+	<group name="ExpenseAmount">
+		<groupExpression><![CDATA[$F{ExpenseAmount}]]></groupExpression>
+	</group>
+	<group name="ExpenseDescription">
+		<groupExpression><![CDATA[$F{ExpenseDescription}]]></groupExpression>
+	</group>
+	<group name="ExpenseDate">
+		<groupExpression><![CDATA[$F{ExpenseDate}]]></groupExpression>
+	</group>
+	<group name="Difference">
+		<groupExpression><![CDATA[$F{Difference}]]></groupExpression>
+	</group>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="84" splitType="Stretch">
+			<staticText>
+				<reportElement x="64" y="0" width="150" height="18" uuid="7c07ab3e-1aeb-486b-8fc4-a3f413adba1c"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Times New Roman" size="10"/>
+				</textElement>
+				<text><![CDATA[Palee EliteTraining Center ]]></text>
+			</staticText>
+			<textField pattern=" dd/MM/ yyyy">
+				<reportElement x="90" y="23" width="124" height="18" uuid="bb511643-3e02-42c8-9eb4-1ef35c368879"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font fontName="Phetsarath OT" size="10"/>
+				</textElement>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="64" y="23" width="25" height="18" uuid="033dee9e-55ed-4fa7-b38a-3dbf7e5267a0"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Phetsarath OT" size="10" isBold="false"/>
+				</textElement>
+				<text><![CDATA[ວັນທີ່:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="41" width="523" height="30" uuid="5ad11bc7-868a-46d8-8fed-b6297ced25b1"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Phetsarath OT" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[ລາຍງານການເງິນ]]></text>
+			</staticText>
+		</band>
+	</title>
+	<columnHeader>
+		<band height="22" splitType="Stretch">
+			<staticText>
+				<reportElement x="62" y="0" width="130" height="20" uuid="f99cdbfa-9e40-43fd-afdf-6c4b9edb69d1">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="2d839b18-f55a-4389-a936-375e4e5c8d9e"/>
+				</reportElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Phetsarath OT" size="11"/>
+				</textElement>
+				<text><![CDATA[ລາຍຮັບ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="192" y="1" width="130" height="20" uuid="b9dbc0e1-d737-452a-bd6d-dbf3b7dbc5a1">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="8f1657f6-9c6a-45a4-98a1-dad24ca09f6a"/>
+				</reportElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Phetsarath OT" size="11"/>
+				</textElement>
+				<text><![CDATA[ລາຍຈ່າຍ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="322" y="1" width="140" height="20" uuid="892b1539-dabb-4bff-abdd-7786a6ffaff0">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="cff68099-e203-4c59-9dbe-be84b9c93325"/>
+				</reportElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Phetsarath OT" size="11"/>
+				</textElement>
+				<text><![CDATA[ຜົນກຳໄລ]]></text>
+			</staticText>
+			<line>
+				<reportElement x="62" y="21" width="400" height="1" uuid="c8522c94-6e2e-4b4a-892b-66aa577b8d80"/>
+				<graphicElement>
+					<pen lineWidth="1.0" lineStyle="Dashed" lineColor="#1C1C1C"/>
+				</graphicElement>
+			</line>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="32" splitType="Stretch">
+			<textField>
+				<reportElement x="62" y="0" width="130" height="30" uuid="079d6de0-cb22-4deb-89f6-6a65753ccb1f"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Phetsarath OT" size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{income}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="192" y="0" width="130" height="30" uuid="bf5e96a9-c92a-4718-917f-d776b152b8ef"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Phetsarath OT" size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{expense}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="322" y="0" width="140" height="30" uuid="187165d6-3a4d-405b-b7e8-c2462a511739"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Phetsarath OT" size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{profit}]]></textFieldExpression>
+			</textField>
+			<line>
+				<reportElement x="62" y="29" width="400" height="1" uuid="8437cac3-e3ab-444b-bf47-96bdf6ef894a"/>
+				<graphicElement>
+					<pen lineWidth="0.5"/>
+				</graphicElement>
+			</line>
+		</band>
+	</detail>
+</jasperReport>

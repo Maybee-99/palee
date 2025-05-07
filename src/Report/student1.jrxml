@@ -1,0 +1,528 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="student1" pageWidth="842" pageHeight="595" orientation="Landscape" columnWidth="786" leftMargin="28" rightMargin="28" topMargin="28" bottomMargin="28" uuid="8b40e417-838a-464b-8655-fa8b5e162788">
+	<property name="com.jaspersoft.studio.data.sql.tables" value=""/>
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="Palee"/>
+	<property name="ireport.zoom" value="1.210000000000002"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="student" class="java.lang.String"/>
+	<parameter name="total" class="java.lang.String"/>
+	<queryString language="SQL">
+		<![CDATA[SELECT student.stdID, student.stdName, student.Lastname, sex.sex,
+		student.phoneNumber, student.Contact, 
+           student.school, district.districtName, province.provinceName
+    FROM student
+    INNER JOIN district ON student.districtID = district.districtID
+    INNER JOIN province ON district.provinceID = province.provinceID
+    INNER JOIN sex ON student.sexID = sex.sexID
+    INNER JOIN registration ON registration.stdID = student.stdID
+    INNER JOIN regisdetail ON regisdetail.regisID = registration.regisID
+    INNER JOIN scholarship ON regisdetail.scholarship_id = scholarship.scholarship_id
+    WHERE scholarship.scholarship =$P{student}
+    GROUP BY student.stdID;]]>
+	</queryString>
+	<field name="stdID" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="stdID"/>
+		<property name="com.jaspersoft.studio.field.label" value="stdID"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="student"/>
+	</field>
+	<field name="stdName" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="stdName"/>
+		<property name="com.jaspersoft.studio.field.label" value="stdName"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="student"/>
+	</field>
+	<field name="Lastname" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="Lastname"/>
+		<property name="com.jaspersoft.studio.field.label" value="Lastname"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="student"/>
+	</field>
+	<field name="sex" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="sex"/>
+		<property name="com.jaspersoft.studio.field.label" value="sex"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="sex"/>
+	</field>
+	<field name="phoneNumber" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="phoneNumber"/>
+		<property name="com.jaspersoft.studio.field.label" value="phoneNumber"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="student"/>
+	</field>
+	<field name="Contact" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="Contact"/>
+		<property name="com.jaspersoft.studio.field.label" value="Contact"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="student"/>
+	</field>
+	<field name="school" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="school"/>
+		<property name="com.jaspersoft.studio.field.label" value="school"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="student"/>
+	</field>
+	<field name="districtName" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="districtName"/>
+		<property name="com.jaspersoft.studio.field.label" value="districtName"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="district"/>
+	</field>
+	<field name="provinceName" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="provinceName"/>
+		<property name="com.jaspersoft.studio.field.label" value="provinceName"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="province"/>
+	</field>
+	<group name="stdID">
+		<groupExpression><![CDATA[$F{stdID}]]></groupExpression>
+	</group>
+	<group name="stdName">
+		<groupExpression><![CDATA[$F{stdName}]]></groupExpression>
+	</group>
+	<group name="Lastname">
+		<groupExpression><![CDATA[$F{Lastname}]]></groupExpression>
+	</group>
+	<group name="sex">
+		<groupExpression><![CDATA[$F{sex}]]></groupExpression>
+	</group>
+	<group name="phoneNumber">
+		<groupExpression><![CDATA[$F{phoneNumber}]]></groupExpression>
+	</group>
+	<group name="Contact">
+		<groupExpression><![CDATA[$F{Contact}]]></groupExpression>
+	</group>
+	<group name="school">
+		<groupExpression><![CDATA[$F{school}]]></groupExpression>
+	</group>
+	<group name="districtName">
+		<groupExpression><![CDATA[$F{districtName}]]></groupExpression>
+	</group>
+	<group name="provinceName">
+		<groupExpression><![CDATA[$F{provinceName}]]></groupExpression>
+	</group>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="150" splitType="Stretch">
+			<staticText>
+				<reportElement x="26" y="10" width="160" height="30" uuid="1d26a453-a084-4e9c-a5f7-7bbfd9057663"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Times New Roman" size="10"/>
+				</textElement>
+				<text><![CDATA[Palee Elite Training Center]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="102" y="120" width="121" height="30" uuid="544e464a-398c-495a-802c-362c92987408"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font fontName="Phetsarath OT" size="11"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{student}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="27" y="120" width="75" height="30" uuid="b1f0207b-ff56-4d82-bb96-505119abb1bb"/>
+				<textElement textAlignment="Justified" verticalAlignment="Middle">
+					<font fontName="Phetsarath OT" size="11" isBold="false"/>
+				</textElement>
+				<text><![CDATA[ສະຖານະນັກຮຽນ:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="70" width="786" height="30" uuid="71bbb387-329b-4847-9117-ca0cc99fa278"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Phetsarath OT" size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[ຂໍ້ມູນນັກຮຽນ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="26" y="40" width="24" height="25" uuid="f804f575-3982-48a8-a999-bd42f1b765c5"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font fontName="Phetsarath OT" size="10" isBold="false"/>
+				</textElement>
+				<text><![CDATA[ວັນທີ່:]]></text>
+			</staticText>
+			<textField pattern=" dd/MM/ yyyy">
+				<reportElement x="50" y="40" width="136" height="25" uuid="a11a9630-7956-44da-8889-1ab484d39960"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font fontName="Phetsarath OT" size="11"/>
+				</textElement>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="25"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="30" splitType="Stretch">
+			<staticText>
+				<reportElement x="60" y="3" width="57" height="25" uuid="114a1131-6c6d-4c8e-a0c9-ad97c3ea8325">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="64e7587d-56e0-45b0-9b3d-f559fdae1fe3"/>
+				</reportElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Phetsarath OT" size="11" isBold="true"/>
+				</textElement>
+				<text><![CDATA[ລະຫັດ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="124" y="3" width="99" height="25" uuid="6be192bc-2f6f-4b90-aacd-bf504d90b316">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="4fc31afd-6ea4-49ae-8b1c-eabe7ac4a4df"/>
+				</reportElement>
+				<textElement textAlignment="Justified" verticalAlignment="Middle">
+					<font fontName="Phetsarath OT" size="11" isBold="true"/>
+				</textElement>
+				<text><![CDATA[ຊື່ ແລະ ນາມສະກຸນ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="224" y="3" width="61" height="25" uuid="08bbe751-c2a7-4091-9a56-ce1ce7ca1fce">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="4814fccf-4dd7-4d0b-b2be-ee074c5a9362"/>
+				</reportElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Phetsarath OT" size="11" isBold="true"/>
+				</textElement>
+				<text><![CDATA[ເພດ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="290" y="3" width="84" height="25" uuid="713fbfab-708d-4215-afae-cf6c4a9607bc">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="f6334a51-9b73-4df4-9154-090a66996f56"/>
+				</reportElement>
+				<textElement textAlignment="Justified" verticalAlignment="Middle">
+					<font fontName="Phetsarath OT" size="11" isBold="true"/>
+				</textElement>
+				<text><![CDATA[ເບີຕິດຕໍ່]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="378" y="3" width="86" height="25" uuid="1327cf75-906b-43cd-a20f-5d64d5b762f8">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="b022d2c6-2af9-44b0-83fb-f92b669b3c44"/>
+				</reportElement>
+				<textElement textAlignment="Justified" verticalAlignment="Middle">
+					<font fontName="Phetsarath OT" size="11" isBold="true"/>
+				</textElement>
+				<text><![CDATA[ເບີຜູ້ປົກຄອງ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="473" y="3" width="96" height="25" uuid="7cde3a00-90ee-4967-9133-673c03c62497">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="80e326a5-9065-4209-b1b4-baf845e1ee54"/>
+				</reportElement>
+				<textElement textAlignment="Justified" verticalAlignment="Middle">
+					<font fontName="Phetsarath OT" size="11" isBold="true"/>
+				</textElement>
+				<text><![CDATA[ໂຮງຮຽນ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="574" y="3" width="100" height="25" uuid="2ecc5c91-4f4c-4209-b2cf-a48e00462085">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="80ff51e4-105e-4d51-bca2-01a8b9d9ebf8"/>
+				</reportElement>
+				<textElement textAlignment="Justified" verticalAlignment="Middle">
+					<font fontName="Phetsarath OT" size="11" isBold="true"/>
+				</textElement>
+				<text><![CDATA[ເມືອງ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="680" y="3" width="98" height="25" uuid="77e092a6-f79c-4fd0-a945-0fa361413cdc">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="c6262d41-8ea8-468a-ba2c-169dffbbdd47"/>
+				</reportElement>
+				<textElement textAlignment="Justified" verticalAlignment="Middle">
+					<font fontName="Phetsarath OT" size="11" isBold="true"/>
+				</textElement>
+				<text><![CDATA[ແຂວງ]]></text>
+			</staticText>
+			<line>
+				<reportElement x="27" y="29" width="753" height="1" uuid="e0a7e08d-5a0d-4907-9380-64c29f987d07">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+				</reportElement>
+				<graphicElement>
+					<pen lineWidth="0.5" lineStyle="Solid" lineColor="#5B5B5E"/>
+				</graphicElement>
+			</line>
+			<line>
+				<reportElement x="27" y="3" width="1" height="27" uuid="df49e3ae-8912-4090-8043-3ca7e3aaf0fb">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<graphicElement>
+					<pen lineWidth="0.5" lineStyle="Solid"/>
+				</graphicElement>
+			</line>
+			<line>
+				<reportElement x="779" y="2" width="1" height="27" uuid="f68ad666-c09b-4c7d-9f94-77525b88ca6a">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<graphicElement>
+					<pen lineWidth="0.5" lineStyle="Solid"/>
+				</graphicElement>
+			</line>
+			<line>
+				<reportElement x="117" y="2" width="1" height="28" uuid="0651982d-61e8-4b05-a6c9-e4e5d2fe66ef">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<graphicElement>
+					<pen lineWidth="0.5" lineStyle="Solid"/>
+				</graphicElement>
+			</line>
+			<line>
+				<reportElement x="223" y="2" width="1" height="28" uuid="c2fb6b80-6e6e-4b35-b9a2-0e057714804f">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<graphicElement>
+					<pen lineWidth="0.5" lineStyle="Solid"/>
+				</graphicElement>
+			</line>
+			<line>
+				<reportElement x="286" y="2" width="1" height="28" uuid="bb9f0b7d-7978-42d0-a5dd-2128b86e6ee9">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<graphicElement>
+					<pen lineWidth="0.5" lineStyle="Solid"/>
+				</graphicElement>
+			</line>
+			<line>
+				<reportElement x="374" y="2" width="1" height="28" uuid="f01a412f-49ec-4091-83ec-dbd236c73c19">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<graphicElement>
+					<pen lineWidth="0.5" lineStyle="Solid"/>
+				</graphicElement>
+			</line>
+			<line>
+				<reportElement x="465" y="2" width="1" height="28" uuid="0e537bd8-11b3-4805-ae4a-333f0b0fe79c">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<graphicElement>
+					<pen lineWidth="0.5" lineStyle="Solid"/>
+				</graphicElement>
+			</line>
+			<line>
+				<reportElement x="570" y="2" width="1" height="28" uuid="f5ef9341-1833-4ef8-b6e3-7b228dc245fe">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<graphicElement>
+					<pen lineWidth="0.5" lineStyle="Solid"/>
+				</graphicElement>
+			</line>
+			<line>
+				<reportElement x="675" y="2" width="1" height="28" uuid="e4598d5f-90f1-44c4-90cc-966439141030">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<graphicElement>
+					<pen lineWidth="0.5" lineStyle="Solid"/>
+				</graphicElement>
+			</line>
+			<line>
+				<reportElement x="27" y="2" width="753" height="1" uuid="941aa654-f2d1-4462-bf1a-0bfe41d9c6a2">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+					<property name="com.jaspersoft.studio.unit.y" value="px"/>
+				</reportElement>
+				<graphicElement>
+					<pen lineWidth="0.5" lineStyle="Solid" lineColor="#5B5B5E"/>
+				</graphicElement>
+			</line>
+			<staticText>
+				<reportElement x="28" y="3" width="31" height="25" uuid="ca7464ea-b3a8-4547-98c4-62caf0e0f299"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Phetsarath OT" size="11" isBold="true"/>
+				</textElement>
+				<text><![CDATA[ລ/ດ]]></text>
+			</staticText>
+			<line>
+				<reportElement x="59" y="3" width="1" height="27" uuid="6c147675-ed4e-4f6e-80b5-2016a149a6da">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<graphicElement>
+					<pen lineWidth="0.5" lineStyle="Solid"/>
+				</graphicElement>
+			</line>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="21" splitType="Stretch">
+			<textField>
+				<reportElement x="60" y="0" width="57" height="20" uuid="c589a2f3-1ce2-4578-9e03-bad571be16c2">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="64e7587d-56e0-45b0-9b3d-f559fdae1fe3"/>
+				</reportElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Times New Roman" size="10"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{stdID}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="124" y="0" width="99" height="20" uuid="42e99689-bc20-4469-b53f-fbc080c6275a">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="4fc31afd-6ea4-49ae-8b1c-eabe7ac4a4df"/>
+				</reportElement>
+				<textElement textAlignment="Justified" verticalAlignment="Middle">
+					<font fontName="Phetsarath OT" size="10"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{stdName}+" "+$F{Lastname}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="224" y="0" width="61" height="20" uuid="44a91984-d539-4740-897c-a2018758cecb">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="4814fccf-4dd7-4d0b-b2be-ee074c5a9362"/>
+				</reportElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Phetsarath OT" size="10"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{sex}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="290" y="0" width="84" height="20" uuid="e69e6ccd-c8db-423a-ba09-00ce7f3958fb">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="f6334a51-9b73-4df4-9154-090a66996f56"/>
+				</reportElement>
+				<textElement textAlignment="Justified" verticalAlignment="Middle">
+					<font fontName="Times New Roman" size="10"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{phoneNumber}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="378" y="0" width="86" height="20" uuid="ed26757b-9e93-458b-8121-75bd8adfe665">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="b022d2c6-2af9-44b0-83fb-f92b669b3c44"/>
+				</reportElement>
+				<textElement textAlignment="Justified" verticalAlignment="Middle">
+					<font fontName="Times New Roman" size="10"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{Contact}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="473" y="0" width="96" height="20" uuid="e994570e-5b86-4a76-a80b-9c6bace9922d">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="80e326a5-9065-4209-b1b4-baf845e1ee54"/>
+				</reportElement>
+				<textElement textAlignment="Justified" verticalAlignment="Middle">
+					<font fontName="Phetsarath OT" size="10"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{school}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="574" y="0" width="100" height="20" uuid="6b83c37b-5d5a-4b24-8372-325d4be6565e">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="80ff51e4-105e-4d51-bca2-01a8b9d9ebf8"/>
+				</reportElement>
+				<textElement textAlignment="Justified" verticalAlignment="Middle">
+					<font fontName="Phetsarath OT" size="10"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{districtName}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="680" y="0" width="98" height="20" uuid="d9742bd3-be58-4412-91f9-6fb470ab9ed3">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="c6262d41-8ea8-468a-ba2c-169dffbbdd47"/>
+				</reportElement>
+				<textElement textAlignment="Justified" verticalAlignment="Middle">
+					<font fontName="Phetsarath OT" size="10"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{provinceName}]]></textFieldExpression>
+			</textField>
+			<line>
+				<reportElement x="27" y="20" width="753" height="1" uuid="6759d754-3d65-4f46-b571-7a33cbb80e3f">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+				</reportElement>
+				<graphicElement>
+					<pen lineWidth="0.5" lineStyle="Solid" lineColor="#5B5B5E"/>
+				</graphicElement>
+			</line>
+			<line>
+				<reportElement x="27" y="-1" width="1" height="21" uuid="fb2920c5-8ec6-442e-9a42-4d6775e436be">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<graphicElement>
+					<pen lineWidth="0.5" lineStyle="Solid"/>
+				</graphicElement>
+			</line>
+			<line>
+				<reportElement x="117" y="0" width="1" height="20" uuid="d50a13f2-a35e-4e63-9e64-60802882d915">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<graphicElement>
+					<pen lineWidth="0.5" lineStyle="Solid"/>
+				</graphicElement>
+			</line>
+			<line>
+				<reportElement x="223" y="0" width="1" height="20" uuid="ce684ea9-d313-48dd-804e-119527e179bd">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<graphicElement>
+					<pen lineWidth="0.5" lineStyle="Solid"/>
+				</graphicElement>
+			</line>
+			<line>
+				<reportElement x="286" y="0" width="1" height="20" uuid="1b8cc95c-302f-4255-b034-0c68a06a029b">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<graphicElement>
+					<pen lineWidth="0.5" lineStyle="Solid"/>
+				</graphicElement>
+			</line>
+			<line>
+				<reportElement x="374" y="0" width="1" height="20" uuid="5561d5f9-0a65-47a0-bd4f-32049f200d2a">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<graphicElement>
+					<pen lineWidth="0.5" lineStyle="Solid"/>
+				</graphicElement>
+			</line>
+			<line>
+				<reportElement x="465" y="0" width="1" height="20" uuid="f0ebc38b-c080-4bb5-858f-9e96a819fc26">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<graphicElement>
+					<pen lineWidth="0.5" lineStyle="Solid"/>
+				</graphicElement>
+			</line>
+			<line>
+				<reportElement x="570" y="0" width="1" height="20" uuid="ffe437dc-edc9-4375-a819-7df2c87ff81c">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<graphicElement>
+					<pen lineWidth="0.5" lineStyle="Solid"/>
+				</graphicElement>
+			</line>
+			<line>
+				<reportElement x="675" y="0" width="1" height="20" uuid="5e8ff6f2-75ca-4099-b700-3f80cef2a2e2">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<graphicElement>
+					<pen lineWidth="0.5" lineStyle="Solid"/>
+				</graphicElement>
+			</line>
+			<line>
+				<reportElement x="779" y="0" width="1" height="20" uuid="e77708f4-bbde-4677-bf6f-4fae5ac57eaf">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<graphicElement>
+					<pen lineWidth="0.5" lineStyle="Solid"/>
+				</graphicElement>
+			</line>
+			<textField>
+				<reportElement x="28" y="1" width="31" height="18" uuid="80cc2d93-79d9-4861-aa89-6ada1adc24ad"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Times New Roman"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$V{REPORT_COUNT}]]></textFieldExpression>
+			</textField>
+			<line>
+				<reportElement x="59" y="-1" width="1" height="21" uuid="72f441c9-36f6-40f4-838e-e6f749ba370b">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<graphicElement>
+					<pen lineWidth="0.5" lineStyle="Solid"/>
+				</graphicElement>
+			</line>
+		</band>
+	</detail>
+	<pageFooter>
+		<band height="40">
+			<textField>
+				<reportElement x="0" y="10" width="780" height="22" uuid="034890c7-3acf-4ece-9cf5-25726141b193"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Times New Roman" size="11"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageFooter>
+	<summary>
+		<band height="40" splitType="Stretch">
+			<staticText>
+				<reportElement x="603" y="1" width="128" height="30" uuid="4c3d5684-2bcb-490a-9f0b-f4e4a000f506"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font fontName="Phetsarath OT" size="11" isBold="false"/>
+				</textElement>
+				<text><![CDATA[ຈຳນວນນັກຮຽນທັງໝົດ:]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="731" y="0" width="49" height="30" uuid="a8f8dd91-a8ea-447c-a84b-525786a24584"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Phetsarath OT" size="11" isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{total}]]></textFieldExpression>
+			</textField>
+		</band>
+	</summary>
+</jasperReport>

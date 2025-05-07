@@ -1,0 +1,286 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="fee" pageWidth="420" pageHeight="595" columnWidth="380" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="1fc3916e-9028-4a61-b536-3040c19229ed">
+	<property name="com.jaspersoft.studio.data.sql.tables" value=""/>
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="Palee"/>
+	<property name="ireport.zoom" value="1.7715610000000013"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="122"/>
+	<parameter name="billID" class="java.lang.String"/>
+	<parameter name="status" class="java.lang.String"/>
+	<parameter name="qrCode" class="java.awt.Image"/>
+	<queryString language="SQL">
+		<![CDATA[SELECT 
+    CONCAT(s.stdName, ' ', s.LastName) AS fullName,
+    p.amount,
+    p.pay,
+    p.pend,
+    p.payDate,
+    CASE 
+        WHEN p.amount = p.pay OR p.pend = 0 THEN 'ຈ່າຍແລ້ວ'
+        ELSE 'ຍັງຈ່າຍບໍ່ຄົບ'
+    END AS status
+FROM payment p
+INNER JOIN registration r ON p.regisID = r.regisID
+INNER JOIN student s ON r.stdID = s.stdID
+WHERE r.regisID =$P{billID};]]>
+	</queryString>
+	<field name="fullName" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="fullName"/>
+		<property name="com.jaspersoft.studio.field.label" value="fullName"/>
+	</field>
+	<field name="amount" class="java.lang.Integer">
+		<property name="com.jaspersoft.studio.field.name" value="amount"/>
+		<property name="com.jaspersoft.studio.field.label" value="amount"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="payment"/>
+	</field>
+	<field name="pay" class="java.lang.Integer">
+		<property name="com.jaspersoft.studio.field.name" value="pay"/>
+		<property name="com.jaspersoft.studio.field.label" value="pay"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="payment"/>
+	</field>
+	<field name="pend" class="java.lang.Integer">
+		<property name="com.jaspersoft.studio.field.name" value="pend"/>
+		<property name="com.jaspersoft.studio.field.label" value="pend"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="payment"/>
+	</field>
+	<field name="payDate" class="java.sql.Date">
+		<property name="com.jaspersoft.studio.field.name" value="payDate"/>
+		<property name="com.jaspersoft.studio.field.label" value="payDate"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="payment"/>
+	</field>
+	<field name="status" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="status"/>
+		<property name="com.jaspersoft.studio.field.label" value="status"/>
+	</field>
+	<group name="fullName">
+		<groupExpression><![CDATA[$F{fullName}]]></groupExpression>
+	</group>
+	<group name="amount">
+		<groupExpression><![CDATA[$F{amount}]]></groupExpression>
+	</group>
+	<group name="pay">
+		<groupExpression><![CDATA[$F{pay}]]></groupExpression>
+	</group>
+	<group name="pend">
+		<groupExpression><![CDATA[$F{pend}]]></groupExpression>
+	</group>
+	<group name="payDate">
+		<groupExpression><![CDATA[$F{payDate}]]></groupExpression>
+	</group>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="198" splitType="Stretch">
+			<staticText>
+				<reportElement x="13" y="10" width="160" height="25" uuid="8c076846-4b6f-44ae-b9fd-0169c0e81397"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Times New Roman" size="10"/>
+				</textElement>
+				<text><![CDATA[Palee Elite Training Center]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="13" y="36" width="24" height="25" uuid="f4ec2dde-042b-4614-9888-b504a2d83434"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font fontName="Phetsarath OT" size="10" isBold="false"/>
+				</textElement>
+				<text><![CDATA[ວັນທີ່:]]></text>
+			</staticText>
+			<textField pattern=" dd/MM/ yyyy">
+				<reportElement x="37" y="36" width="136" height="25" uuid="cbc7f6c8-2111-4c21-b7d4-4f3136fecd54"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font fontName="Phetsarath OT" size="10"/>
+				</textElement>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="1" y="104" width="380" height="30" uuid="72ce7a62-2ecf-414d-9d75-76308194da4c"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Phetsarath OT" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[ໃບບິນຈ່າຍຄ່າຮຽນ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="13" y="150" width="34" height="19" uuid="1fcafb09-da2e-4e51-b94d-8abba76700f2"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Phetsarath OT" size="11"/>
+				</textElement>
+				<text><![CDATA[ເລກບິນ:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="13" y="170" width="42" height="22" uuid="28162681-645d-4c41-a431-ff9374d2e38b"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Phetsarath OT" size="11" isBold="false"/>
+				</textElement>
+				<text><![CDATA[ຊື່ນັກຮຽນ:]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="47" y="150" width="58" height="20" uuid="5551b690-856b-4ae1-8cee-95c8a6a1b255"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Times New Roman" size="11"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{billID}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="54" y="170" width="120" height="22" uuid="66dcd284-4bee-4065-a910-bfbd03b9719e"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font fontName="Phetsarath OT" size="11"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{fullName}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="13" y="61" width="197" height="25" uuid="e24c1bd7-545b-4951-b0da-8f5a97c6bab2"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font fontName="Phetsarath OT" size="10" isBold="false"/>
+				</textElement>
+				<text><![CDATA[ເບີໂທຕິດຕໍ່ສູນ: 02054337787, 02055061124]]></text>
+			</staticText>
+			<image hAlign="Center">
+				<reportElement x="316" y="11" width="50" height="50" uuid="67d800d7-7f5b-400b-9935-77ff5d99a84a"/>
+				<imageExpression><![CDATA[$P{qrCode}]]></imageExpression>
+			</image>
+		</band>
+	</title>
+	<columnHeader>
+		<band height="29" splitType="Stretch">
+			<staticText>
+				<reportElement x="0" y="3" width="95" height="25" uuid="9297c6a1-ed33-4ad2-9d44-cc705cfd720f">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="fe9acfa8-d43a-4e74-bcaf-52a0ffed2c31"/>
+				</reportElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Phetsarath OT" size="11"/>
+				</textElement>
+				<text><![CDATA[ຄ່າເທີມ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="95" y="3" width="95" height="25" uuid="0abecbca-a0af-4524-b93e-6e4a4b4c3ce6">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="871d2333-e3df-47c5-bf47-c8992d2b4692"/>
+				</reportElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Phetsarath OT" size="11"/>
+				</textElement>
+				<text><![CDATA[ເງິນທີ່ຈ່າຍແລ້ວ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="190" y="3" width="95" height="25" uuid="1c0fce1e-9604-4d2a-b0d1-6a67ca9a78b2">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="09620549-a065-4867-80f2-9022b4b6e03f"/>
+				</reportElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Phetsarath OT" size="11"/>
+				</textElement>
+				<text><![CDATA[ເງິນທີ່ຄ້າງຈ່າຍ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="285" y="3" width="95" height="25" uuid="e739b4fc-2043-484c-8ae2-be3750383977">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="8d6ae5af-7c32-446c-9790-43263fbecfc9"/>
+				</reportElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Phetsarath OT" size="11"/>
+				</textElement>
+				<text><![CDATA[ວັນທີ່ຈ່າຍ]]></text>
+			</staticText>
+			<line>
+				<reportElement x="0" y="28" width="380" height="1" uuid="6811c3d1-0bc0-4eb0-bcf6-a5f1cb12604d"/>
+				<graphicElement>
+					<pen lineWidth="0.5" lineStyle="Solid" lineColor="#A3A2A2"/>
+				</graphicElement>
+			</line>
+			<line>
+				<reportElement x="0" y="2" width="380" height="1" uuid="7cb144d1-d05e-4c74-87e3-03f03b402df6"/>
+				<graphicElement>
+					<pen lineWidth="0.5" lineStyle="Dashed"/>
+				</graphicElement>
+			</line>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="25" splitType="Stretch">
+			<textField pattern="#,### ₭">
+				<reportElement x="0" y="0" width="95" height="25" uuid="4cf888d7-2e74-4c8c-a615-6fe7b5590f58">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="fe9acfa8-d43a-4e74-bcaf-52a0ffed2c31"/>
+				</reportElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Times New Roman" size="11"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{amount}]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,### ₭">
+				<reportElement x="95" y="0" width="95" height="25" uuid="25f4739b-e30e-4d47-aee0-5677e242b234">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="871d2333-e3df-47c5-bf47-c8992d2b4692"/>
+				</reportElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Times New Roman" size="11"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{pay}]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,### ₭">
+				<reportElement x="190" y="0" width="95" height="25" uuid="f8b6f548-5ff0-4622-a000-6fbcaa56bccd">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="09620549-a065-4867-80f2-9022b4b6e03f"/>
+				</reportElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Times New Roman" size="11"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{pend}]]></textFieldExpression>
+			</textField>
+			<textField pattern="dd/MM/yyyy">
+				<reportElement x="285" y="0" width="95" height="25" uuid="3b09d36a-d125-47d7-9974-ecb0452ed5ba">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="8d6ae5af-7c32-446c-9790-43263fbecfc9"/>
+				</reportElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Times New Roman" size="11"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{payDate}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<summary>
+		<band height="169" splitType="Stretch">
+			<line>
+				<reportElement x="0" y="1" width="380" height="1" uuid="5da98277-a5e5-4f44-af8f-bceb2370b849"/>
+				<graphicElement>
+					<pen lineWidth="0.5" lineStyle="Dashed"/>
+				</graphicElement>
+			</line>
+			<ellipse>
+				<reportElement x="161" y="102" width="60" height="60" forecolor="#0099FF" uuid="5d81c64e-07e3-4690-895c-bb5be25fb153"/>
+				<graphicElement>
+					<pen lineStyle="Dashed"/>
+				</graphicElement>
+			</ellipse>
+			<textField>
+				<reportElement x="1" y="119" width="380" height="24" forecolor="#0099FF" uuid="bd898102-c203-4ba7-bc22-c5dc0924a418"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Phetsarath OT" size="11" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{status}]]></textFieldExpression>
+			</textField>
+			<rectangle radius="10">
+				<reportElement x="2" y="15" width="379" height="70" uuid="564e3cdf-f66f-4e2e-8d78-fb90e138cb33"/>
+				<graphicElement>
+					<pen lineWidth="0.5" lineStyle="Dashed" lineColor="#0066FF"/>
+				</graphicElement>
+			</rectangle>
+			<staticText>
+				<reportElement x="2" y="15" width="380" height="25" uuid="3cefb331-46cf-4907-b9c2-6a155e59b45d"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Phetsarath OT" size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[ກົດລະບຽບຂອງການຍົກເລີກຄ່າຮຽນ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="15" y="41" width="353" height="20" uuid="fe124957-b6e8-4e34-b6b1-e7f36c059016"/>
+				<textElement textAlignment="Justified" verticalAlignment="Middle">
+					<font fontName="Phetsarath OT" size="10" isBold="false"/>
+				</textElement>
+				<text><![CDATA[- ຍົກເລີກຄ່າຮຽນກ່ອນ 1 ວັນ, ແມ່ນຄືນ 90% ຂອງຄ່າຮຽນ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="15" y="61" width="353" height="20" uuid="2b40eead-f468-4485-b74f-9d99adbe45dd"/>
+				<textElement textAlignment="Justified" verticalAlignment="Middle">
+					<font fontName="Phetsarath OT" size="10" isBold="false"/>
+				</textElement>
+				<text><![CDATA[- ຍົກເລີກຄ່າຮຽນຫຼັງ 1 ວັນ, ແມ່ນຄືນ 0% ຂອງຄ່າຮຽນ]]></text>
+			</staticText>
+		</band>
+	</summary>
+</jasperReport>
