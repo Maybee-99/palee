@@ -63,8 +63,8 @@ public class LoginPage extends JFrame {
     }
 
     private void setAppIcon() {
-        ImageIcon icons = new ImageIcon(getClass().getResource("/Icon/palee management system.png"));
-        setIconImage(icons.getImage());
+         ImageIcon icons = new ImageIcon(getClass().getResource("/Icon/palee management system.png"));
+         setIconImage(icons.getImage());
     }
 
     private void visiblepassword() {
@@ -83,7 +83,7 @@ public class LoginPage extends JFrame {
         panel = createPanel();
         mainPanel.add(panel);
 
-        ImageIcon backgroundIcon = new ImageIcon(getClass().getResource("/Icon/bg.png"));
+        ImageIcon backgroundIcon = new ImageIcon(getClass().getResource("/Icon/a.jpg"));
         BackgroundPanel bgPanel = new BackgroundPanel(backgroundIcon.getImage());
         bgPanel.setLayout(new BorderLayout());
         bgPanel.add(mainPanel, BorderLayout.CENTER);
