@@ -83,7 +83,7 @@ public class LoginPage extends JFrame {
         panel = createPanel();
         mainPanel.add(panel);
 
-        ImageIcon backgroundIcon = new ImageIcon(getClass().getResource("/Icon/a.jpg"));
+        ImageIcon backgroundIcon = new ImageIcon(getClass().getResource("/Icon/bg.png"));
         BackgroundPanel bgPanel = new BackgroundPanel(backgroundIcon.getImage());
         bgPanel.setLayout(new BorderLayout());
         bgPanel.add(mainPanel, BorderLayout.CENTER);
