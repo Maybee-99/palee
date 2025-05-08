@@ -14,11 +14,11 @@ public class connectDB {
 
     private static final String DRIVER = "com.mysql.cj.jdbc.Driver";
 
-    private static final String LOCAL_URL = "jdbc:mysql://localhost:3306/dbpalee?connectTimeout=5000";
+    private static final String LOCAL_URL = "jdbc:mysql://localhost:3306/dbpalee";
     private static final String LOCAL_USER = "root";
     private static final String LOCAL_PASSWORD = "@020mbdev";
 
-    private static final String SERVER_URL = "jdbc:mysql://trolley.proxy.rlwy.net:51581/railway?connectTimeout=5000";
+    private static final String SERVER_URL = "jdbc:mysql://trolley.proxy.rlwy.net:51581/railway";
     private static final String SERVER_USER = "root";
     private static final String SERVER_PASSWORD = "PSdZLvQLTWJLWlkntomCVjQVgCHPUPfA";
 

@@ -44,16 +44,18 @@ public class Student extends javax.swing.JInternalFrame {
     }
 
     private void retrieveProvince() {
-        try {
-            sql = "select * from province";
-            province.clear();
-            edit.cmbProvince.removeAllItems();
-            ResultSet rs = con.createStatement().executeQuery(sql);
+        province.clear();
+        EditStudent.cmbProvince.removeAllItems();
+
+        sql = "SELECT * FROM province";
+        try (Statement stmt = con.createStatement(); ResultSet rs = stmt.executeQuery(sql)) {
+
             while (rs.next()) {
                 province.add(rs.getString("provinceID"));
-                edit.cmbProvince.addItem(rs.getString("provinceName"));
+                EditStudent.cmbProvince.addItem(rs.getString("provinceName"));
             }
-        } catch (Exception e) {
+
+        } catch (SQLException e) {
             e.printStackTrace();
         }
     }
@@ -388,9 +390,15 @@ public class Student extends javax.swing.JInternalFrame {
 
     public void showData() {
         try {
+            if (con == null || con.isClosed()) {
+                con =connectDB.getConnect();// Reconnect if connection is closed
+            }
+
             ClearTable();
             sql = "call selectStudentCondition()";
-            try (ResultSet rs = con.createStatement().executeQuery(sql)) {
+
+            try (Statement stmt = con.createStatement(); ResultSet rs = stmt.executeQuery(sql)) {
+
                 while (rs.next()) {
                     String[] data = {
                         rs.getString("stdID"),
@@ -403,11 +411,10 @@ public class Student extends javax.swing.JInternalFrame {
                         rs.getString("districtName"),
                         rs.getString("provinceName"),
                         rs.getString("stay")
-
                     };
                     model.addRow(data);
                 }
-                rs.close();
+
             }
         } catch (Exception e) {
             e.printStackTrace();

@@ -170,14 +170,14 @@ WHERE registration.regisID = $P{billNo};]]>
 				<imageExpression><![CDATA[$P{qrCode}]]></imageExpression>
 			</image>
 			<staticText>
-				<reportElement x="1" y="142" width="65" height="22" uuid="c00e4306-2e08-4d3c-94f2-1ecd78182448"/>
+				<reportElement x="1" y="142" width="69" height="22" uuid="c00e4306-2e08-4d3c-94f2-1ecd78182448"/>
 				<textElement verticalAlignment="Middle">
 					<font fontName="Phetsarath OT" size="11" isBold="true"/>
 				</textElement>
 				<text><![CDATA[ລະຫັດນັກຮຽນ:]]></text>
 			</staticText>
 			<textField>
-				<reportElement x="66" y="142" width="89" height="22" uuid="afe30d41-9c2a-42f5-add6-914e4c116f87"/>
+				<reportElement x="72" y="142" width="89" height="22" uuid="afe30d41-9c2a-42f5-add6-914e4c116f87"/>
 				<textElement textAlignment="Justified" verticalAlignment="Middle">
 					<font fontName="Times New Roman" size="11" isBold="false"/>
 				</textElement>
